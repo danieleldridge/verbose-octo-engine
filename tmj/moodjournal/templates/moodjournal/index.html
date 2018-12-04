@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+<head>
+    {% block head %}
+    <title>Home</title>
+    {% endblock %}
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'moodjournal/style.css' %}">
+
+</head>
+
+{% block body %}
+{% if user.is_authenticated %}
+<body>
+
+    <br>
+    <div class="container">
+        <h2>Take a moment to write down how you're feeling.</h2>
+    </div>
+
+    <div class="container">
+        <form action="/moodjournal/submit/" method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button class="btn btn-primary" type="submit" name="Submit">Submit</button>
+
+        </form>
+    </div>
+
+</body>
+{% else %}
+  <br>
+  <div class="container">
+      <h3>Welcome! Please login.</h3>
+      <a href="{% url 'login' %}">login</a>
+  </div>
+{% endif %}
+{% endblock %}

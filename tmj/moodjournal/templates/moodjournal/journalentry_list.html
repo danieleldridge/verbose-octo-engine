@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+<title>MoodJournal</title>
+{% endblock %}
+
+{% block body %}
+{% if user.is_authenticated %}
+<div class="container" align="center">
+	<iframe width="675" height="600" frameborder="0" scrolling="no" src="//plot.ly/~deldridge/9.embed?link=false&modebar=false"></iframe>
+</div>
+
+<div class="container">
+	<br>
+</div>
+<div class="container">
+    <ul>
+        {% for entry in object_list %}
+            <li>{{ entry.mood_date}} &nbsp;&nbsp;&nbsp; Mood : {{ entry.mood_rating }} &nbsp;&nbsp;&nbsp; "{{ entry.mood_entry }}"</li>
+            <br>
+
+        {% endfor %}
+    </ul>
+</div>
+{% else %}
+<div class="container">
+	<br>
+	<p>You are not logged in</p>
+</div>
+{% endif %}
+{% endblock %}
+
+
+
+<!-- #<iframe width="900" height="800" frameborder="0" scrolling="no" src="//plot.ly/~deldridge/6.embed"></iframe>
+ -->
