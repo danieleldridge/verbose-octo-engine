@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',
+    'django_extensions',
     'moodjournal',
     'crispy_forms',
 ]
@@ -123,7 +123,11 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
+
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
