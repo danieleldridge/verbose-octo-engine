@@ -1,1 +1,1 @@
-web: gunicorn notme.wsgi
+web: gunicorn tmj.wsgi
